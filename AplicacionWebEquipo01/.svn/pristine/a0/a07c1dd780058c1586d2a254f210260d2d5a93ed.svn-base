@@ -1,0 +1,26 @@
+import junit.framework.Test;
+import junit.framework.TestSuite;
+
+public class SeleniumJava {
+
+  public static Test suite() {
+    TestSuite suite = new TestSuite();
+    suite.addTestSuite(RegistrarseDatosIncorrectos.class);
+    suite.addTestSuite(LoginIncorrecto.class);
+    suite.addTestSuite(LoginCorrecto.class);
+    suite.addTestSuite(RegistroCorrecto.class);
+    suite.addTestSuite(LoginAdmin.class);
+    suite.addTestSuite(AdminVerUsuarios.class);
+    suite.addTestSuite(AdminVerEventos.class);
+    suite.addTestSuite(AdminInsertarEvento.class);
+    suite.addTestSuite(LogOutAdmin.class);
+    suite.addTestSuite(logOut.class);
+    suite.addTestSuite(loginAdmin.class);
+    suite.addTestSuite(AdminEliminarUsuario.class);
+    return suite;
+  }
+
+  public static void main(String[] args) {
+    junit.textui.TestRunner.run(suite());
+  }
+}

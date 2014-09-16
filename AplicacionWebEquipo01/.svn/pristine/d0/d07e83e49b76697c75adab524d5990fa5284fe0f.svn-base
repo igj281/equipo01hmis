@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Herramientas y metodos de ingenieria del software</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+
+  
+<center>
+
+</right>
+<center>
+<div class="page-header"><h1>Horarios de la semana (Admin)</h1>
+	</center>
+	
+</div>
+</head>
+<div class="col-md-6">
+<br/>
+</br/>
+ <body>
+
+<form class="form-insertar" role="form">
+  <div class="form-group">
+    <label for="nombreEvento" class="col-lg-2 control-label">Nombre del evento</label>
+    <div class="col-lg-8">
+      <input type="text" class="form-control" id="nombreEvento" placeholder="Nombre del evento">
+    </div>
+    <br/>
+
+  </div>
+  
+<br/>
+  <div class="form-group">
+    <label for="inputPassword1" class="col-lg-2 control-label">Fecha</label>
+    <div class="col-lg-8">
+      <input type="text" class="form-control" id="fechaEvento" placeholder="Fecha">
+    </div>
+  </div>
+  <br/>
+<br/>
+  <form class="form-insertar" role="form">
+  <div class="form-group">
+    <label for="nombreEvento" class="col-lg-2 control-label">Hora</label>
+    <div class="col-lg-8">
+      <input type="text" class="form-control" id="horaEvento" placeholder="Hora">
+    </div>
+  </div>
+  <br/>
+<br/>
+  <div class="form-group">
+    <label for="inputPassword1" class="col-lg-2 control-label">Aforo</label>
+    <div class="col-lg-8">
+      <input type="text" class="form-control" id="aforoEvento" placeholder="aforo">
+    </div>
+  </div>
+<br/>
+<br/>
+<div class="form-group">
+    <label for="inputPassword1" class="col-lg-2 control-label">Descripcion</label>
+    <div class="col-lg-8">
+      <input type="text" class="form-control" id="DescripcionEvento" placeholder="Descripcion">
+    </div>
+  </div>
+  <br/>
+<br/>
+<a position="center"  href ="index"<a class="btn btn-large btn-primary"  href="/">Insertar evento</a>
+<a position="center"  href ="index"<a class="btn btn-large btn-danger"  href="/">Cancelar</a>
+</form>
+</div>
+<div class="col-md-6">
+  <br/>
+
+<h5>Usuarios</5>
+  
+  <div style="height:250px; overflow-y: scroll;">
+    
+<table class="table table-bordered">
+  
+ <td>ID</td>
+<td>Nombre</td>
+<td>Apellidos</td>
+<td>mail</td>
+<td>Accion</td>
+
+</tr>
+<tr>
+<td>1</td>
+<td>Jose</td>
+<td>Perez Perez</td>
+<td>jogñscxse@gmail.com</td>
+
+<td>
+ <button type="button" class="btn btn-danger">Eliminar</button>
+ <button type="button" class="btn btn-success">Hacer admin</button>
+</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Juna</td>
+<td>sanchez Perez</td>
+<td>juan@gmail.com</td>
+
+<td>
+  <button type="button" class="btn btn-danger">Eliminar</button>
+ <button type="button" class="btn btn-success">Hacer admin</button>
+</tr>
+<tr>
+<td>3</td>
+<td>luis</td>
+<td>lopez lopez</td>
+<td>luis@gmail.com</td>
+
+<td><button type="button" class="btn btn-danger">Eliminar</button>
+ <button type="button" class="btn btn-success">Hacer admin</button>
+</tr>
+<tr>
+<td>4</td>
+<td>maria</td>
+<td>martin Perez</td>
+<td>maria@gmail.com</td>
+<td><button type="button" class="btn btn-danger">Eliminar</button>
+ <button type="button" class="btn btn-success">Hacer admin</button>
+</tr>
+<tr>
+<td>4</td>
+<td>maria</td>
+<td>martin Perez</td>
+<td>maria@gmail.com</td>
+<td><button type="button" class="btn btn-danger">Eliminar</button>
+ <button type="button" class="btn btn-success">Hacer admin</button>
+</tr>
+<tr>
+<td>4</td>
+<td>maria</td>
+<td>martin Perez</td>
+<td>maria@gmail.com</td>
+<td><button type="button" class="btn btn-danger">Eliminar</button>
+ <button type="button" class="btn btn-success">Hacer admin</button>
+</tr>
+<tr>
+<td>4</td>
+<td>maria</td>
+<td>martin Perez</td>
+<td>maria@gmail.com</td>
+<td><button type="button" class="btn btn-danger">Eliminar</button>
+ <button type="button" class="btn btn-success">Hacer admin</button>
+</tr>
+<tr>
+<td>4</td>
+<td>maria</td>
+<td>martin Perez</td>
+<td>maria@gmail.com</td>
+<td><button type="button" class="btn btn-danger">Eliminar</button>
+ <button type="button" class="btn btn-success">Hacer admin</button>
+</tr>
+<tr>
+<td>4</td>
+<td>maria</td>
+<td>martin Perez</td>
+<td>maria@gmail.com</td>
+<td><button type="button" class="btn btn-danger">Eliminar</button>
+ <button type="button" class="btn btn-success">Hacer admin</button>
+</tr>
+<tr>
+<td>4</td>
+<td>maria</td>
+<td>martin Perez</td>
+<td>maria@gmail.com</td>
+<td><button type="button" class="btn btn-danger">Eliminar</button>
+ <button type="button" class="btn btn-success">Hacer admin</button>
+</tr>
+<tr>
+<td>4</td>
+<td>maria</td>
+<td>martin Perez</td>
+<td>maria@gmail.com</td>
+<td><button type="button" class="btn btn-danger">Eliminar</button>
+ <button type="button" class="btn btn-success">Hacer admin</button>
+</tr>
+<tr>
+<td>4</td>
+<td>maria</td>
+<td>martin Perez</td>
+<td>maria@gmail.com</td>
+<td><button type="button" class="btn btn-danger">Eliminar</button>
+ <button type="button" class="btn btn-success">Hacer admin</button></tr>
+</table>
+</body>
+</br>
+</div>
+</div>
+<a position="center"  href ="admin"<a class="btn btn-large btn-primary"  href="/">Actualizar</a>
+
+</body>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+
+        <?php echo HTML::style('assets/bootstrap/css/bootstrap.min.css');; ?>
+    </head>
+    <body>
+        <div class="container">
+            <?php if($errors->has()): ?>
+              <div class="col-md-6 col-md-offset-3 text-center" > <div class="alert alert-danger">Los datos son incorrectos</div></div>
+            <?php endif; ?>
+            <?php echo Form::open(array('url' => '/registro', 'class'=>'col-md-6 col-md-offset-3')); ?>
+                <div class="form-group">
+                     <h1> Registro de usuarios </h1>
+                <br>
+                <?php echo Form::label('user', 'Nombre de usuario'); ?>
+                <?php echo Form::text('user', null, array('class'=>'form-control','placeholder="Nick de identificacion"'));; ?>
+
+                <?php echo Form::label('contraseña', 'Contraseña'); ?>
+                <?php echo Form::password('password', array('class'=>'form-control','placeholder="contraseña"'));; ?>
+
+                <?php echo Form::label('email', 'direccion email'); ?>
+                <?php echo Form::text('email', null, array('class'=>'form-control','placeholder="loquesea@loquesea.com"'));; ?>
+
+                <?php echo Form::label('nombre', 'Nombre'); ?>
+                <?php echo Form::text('nombre', null, array('class'=>'form-control','placeholder="Nombre"'));; ?>
+
+                <?php echo Form::label('apellidos', 'Apellidos'); ?>
+                <?php echo Form::text('apellidos', null, array('class'=>'form-control','placeholder="Apellidos"'));; ?>
+
+                <?php echo Form::label('telefono', 'Telefono'); ?>
+                <?php echo Form::text('telefono', null, array('class'=>'form-control','placeholder="Telefono"'));; ?>
+                </div>
+                <div class="form-group">
+                    <?php echo Form::submit('Enviar', array('class'=>'btn btn-primary')); ?>
+                    <a href="./login" class="btn btn-danger"> Cancelar </a>
+                </div>
+            <?php echo Form::close(); ?>
+        </div>
+    </body>
+</html>

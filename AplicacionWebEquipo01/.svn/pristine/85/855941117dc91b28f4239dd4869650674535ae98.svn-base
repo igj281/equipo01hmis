@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Herramientas y metodos de ingenieria del software</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+
+  
+<center>
+
+</right>
+<center>
+<div class="page-header"><h1>Horarios de la semana </h1>
+	</center>
+	
+</div>
+</head>
+<br/>
+</br/>
+ <body>
+<div class="row" align="center">
+   <div class="col-md-2"><h4>Hora espectaculo</div>
+  <div class="col-md-1" color><h4>Lunes</div>
+  <div class="col-md-1"><h4>Martes</div>
+  <div class="col-md-1"><h4>Miercoles</div>
+  <div class="col-md-1"><h4>Jueves</div>
+  <div class="col-md-1"><h4>Viernes</div>
+  <div class="col-md-1"><h4>Sabado</div>
+  <div class="col-md-1"><h4>Domingo</div></h4>
+  
+</div>
+
+<br/>
+</br/>
+<div class="row" align="center">
+	
+ 
+    <div class="col-md-2"><h4>9:00-12:00</h4></div>
+  <div class="col-md-1">baile flamenco de tus muertos en bicicleta presentado por </div>
+  <div class="col-md-1">Martes</div>
+  <div class="col-md-1">Miercoles</div>
+  <div class="col-md-1">Jueves</div>
+  <div class="col-md-1">Viernes</div>
+  <div class="col-md-1">Sabado</div>
+  <div class="col-md-1">Domingo</div>
+  
+</div>
+<br/>
+</br/>
+<div class="row" align="center">
+	
+   
+    <div class="col-md-2"><h4>15:00-17:30<h4/></div>
+  <div class="col-md-1">Lunes</div>
+  <div class="col-md-1">Martes</div>
+  <div class="col-md-1">Miercoles</div>
+  <div class="col-md-1">Jueves</div>
+  <div class="col-md-1">Viernes</div>
+  <div class="col-md-1">Sabado</div>
+  <div class="col-md-1">Domingo</div>
+  
+</div>
+<br/>
+</br/>
+<div class="row" align="center">
+	
+   
+   <div class="col-md-2"><h4>18:00-20:00</h4></div>
+  <div class="col-md-1">Lunes</div>
+  <div class="col-md-1">Martes</div>
+  <div class="col-md-1">Miercoles</div>
+  <div class="col-md-1">Jueves</div>
+  <div class="col-md-1">Viernes</div>
+  <div class="col-md-1">Sabado</div>
+  <div class="col-md-1">Domingo</div>
+  
+</div>
+<br/>
+</br/>
+</body>
+<a position="right"  href ="index"<a class="btn btn-large btn-danger"  href="/">Cerrar sesión</a>

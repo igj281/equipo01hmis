@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AplicacionWebEquipo01" default="" basedir=".">
+	<target name="build"
+	   depends="prepare,phpunit"/>  
+	   
+	<target name="build-parallel"
+	   depends="prepare, phpunit"/>
+	<!-- Elimina el build existente, documentos y directorios-->
+	<target name="clean" description="Cleanup build artifacts">
+	  <delete dir="${basedir}/build/coverage"/>
+	  <delete dir="${basedir}/build/logs"/>
+	  <delete dir="${basedir}/build/api"/>
+	  <delete dir="${basedir}/application/cache"/>
+	 </target>
+	<!-- Crea el  build, documentos y directorios-->
+	<target name="prepare" description="Prepare for build">
+	  <mkdir dir="${basedir}/build/coverage"/>
+	  <mkdir dir="${basedir}/build/logs"/>
+	  <mkdir dir="${basedir}/build/api"/>
+	   <mkdir dir="${basedir}/application/cache"/>
+	 </target>
+	<!-- Ejecuta los tests de phpunit que se encuentran en nuestro proyecto-->
+	<target name="phpunit">
+	  <exec dir="${basedir}/controllers" executable="phpunit" failonerror="true" description="Run unit tests with PHPUnit">
+	  <env key="APPLICATION_ENV" value="testing"/>
+	  <arg line="--verbose --stderr" />   
+	  </exec>
+	 </target>
+	<!-- Crea los Javadocs -->
+	<target name="docs" depends="">
+	<javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}">
+	<!-- Define los archivos que debe incluir, nostros incluiremos todos -->
+	<fileset dir="${src.dir}">
+	<include name="**" />
+	</fileset>
+	</javadoc>
+	</target>
+</project>

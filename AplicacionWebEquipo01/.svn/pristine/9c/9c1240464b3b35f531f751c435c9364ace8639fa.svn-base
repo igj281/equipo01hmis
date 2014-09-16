@@ -1,0 +1,48 @@
+<?php
+class AuthControllerTest extends PHPUnit_Framework_TestCase {
+
+//comprobamos que nos redireccina correctamente
+	public function testShowLogin() {
+		if (Auth::check()){
+			$this->call('GET', '/');
+			$this->assertResponseOk();
+		}
+		$this->call('GET', 'login');
+		$this->assertResponseOk();
+	}
+	
+	
+	public function testPostLogin(){
+		 $userdata = array(
+            'user' => Input::get('user'),
+            'password'=> Input::get('password')
+        );
+		if(Auth::attempt($userdata))
+        {
+              //comprobamos que si es admin va a una ventana
+            if ($userdata['user'] == 'administrador'){
+				$this->call('GET', 'admin');
+				$this->assertResponseOk();
+			}else{
+			//sino va a la de user
+				$this->call('GET', '/');
+				$this->assertResponseOk();
+			}
+		}
+		//si hay errores debe mostrarlos
+		$this->call('POST', 'login');
+		$this->assertSessionHasErrors();
+	}
+	
+	//este test comprueba que te redireccione al login.
+	public function testLogOut(){
+		
+		if (Auth::check())
+		{
+			Auth::logout();
+		}
+    $this->assertRedirectedTo('/login');
+	}
+	
+}
+

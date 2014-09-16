@@ -1,0 +1,50 @@
+<?php
+class UserControllerTest extends PHPUnit_Framework_TestCase{
+	
+	//comprobamos que se muestra la vista correctamente
+	
+	public function testGetFormulario(){
+		$this->call('GET', 'formulario');
+		$this->assertResponseOk();
+	}
+	
+	//comprueba qué ocurre al insertar correctamente o incorrectamente
+	public function testPost_formulario(){
+		$reglas =  array(
+					'user'  => array('required', 'min:8'),
+					'password'=>'required',
+					'passwordRE'=>array('required'),
+					'email'=>array('required','email'),
+					'nombre'=>'required',
+					'apellidos'=>'required',
+					'telefono'=>'required'
+					);
+		$validator = Validator::make(Input::all(), $reglas);
+		
+		//si falla la inserción
+		
+		if ( $validator->fails() ){
+ 
+			$this->call('POST', 'formulario');
+			$this->assertSessionHasErrors();
+			
+			//si insertamos correctamente
+			
+		}else{
+			$usuario=new Usuario;
+						$usuario->user=Input::get('user');
+						$usuario->password=Input::get('password');
+						$usuario->email=Input::get('email');
+						$usuario->nombre=Input::get('nombre');
+						$usuario->apellidos=Input::get('apellidos');
+						$usuario->telefono=Input::get('telefono');
+
+						$usuario->save();
+						$this->call('POST', 'formulario');
+ 
+						$this->assertRedirectedToRoute('formulario');
+		}
+ 
+    
+	}
+}

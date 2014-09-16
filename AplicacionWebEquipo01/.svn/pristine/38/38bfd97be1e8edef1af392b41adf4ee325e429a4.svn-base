@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AplicacionWebEquipo01" default="deploy" basedir=".">
+	<target name="build"
+	   depends="prepare, test"/>  
+	   
+	<target name="build-parallel"
+	   depends="prepare, test"/>
+	
+	<!-- Elimina el build existente, documentos y directorios-->
+	<target name="clean" description="Cleanup build artifacts">
+	  <delete dir="${basedir}/build/coverage"/>
+	  <delete dir="${basedir}/build/logs"/>
+	  <delete dir="${basedir}/build/api"/>
+	  <delete dir="${basedir}/application/cache"/>
+	 </target>
+	
+	<!-- Crea el  build, documentos y directorios-->
+	<target name="prepare" description="Prepare for build">
+	  <mkdir dir="${basedir}/build/coverage"/>
+	  <mkdir dir="${basedir}/build/logs"/>
+	  <mkdir dir="${basedir}/build/api"/>
+	   <mkdir dir="${basedir}/application/cache"/>
+	 </target>
+	 
+	 <!-- Crea la bd -->
+	
+	<target name="bd">
+		<pdosqlexec url="mysql:host=equipo01hmi.cloudapp.net;port=8080;dbname=horashmis" userid="root" password="" >
+		  <fileset dir="database">
+		      <include name="*.sql"/>
+		  </fileset>
+		</pdosqlexec>
+	</target>
+		
+	<!-- Ejecuta los test phpunit en nuestro proyecto-->
+	<target name="deploy" depends="test" >
+	   	<ftpdeploy 
+		 host="equipo01hmi.cloudapp.net" 
+		 port="22" 
+		 username="azureuser" 
+		 password="aPxuSXem7n"	 
+		 passive="true"
+		 level="debug"
+		 >
+		 <fileset dir="./controllers"> 
+		 <include name="**"/>
+		 <exclude name="%WORKSPACE%\results.htm"/> 
+		 <exclude name="build*.xml"/> 
+		 <exclude name="phing"/> 
+		 <exclude name="img/**.png"/> 
+		 <exclude name="img/**.gif"/> 
+		 <exclude name="img/**.jpg"/>  
+		 </fileset> 
+		</ftpdeploy>
+	</target>
+	
+	<!-- Cálculo de la cobertura en nuestro proyecto-->
+		<target name="test" depends="bd">
+		    <phpunit haltonfailure="true"  printsummary="true">	
+		      <batchtest>
+		        <fileset dir=".">
+		          <include name="controllers/*Test.php"/>
+		        </fileset>
+		      </batchtest>
+		    </phpunit>
+			<exec dir="."
+				command="phpunit --log-junit 'reports/unitreport.xml'
+				--coverage-html 'reports/coverage'
+				--coverage-clover 'reports/coverage/coverage.xml'
+				test/"
+			/>
+		</target>
+	
+	<!-- Crea la documentacion -->
+			<phpdoc2 title="API Documentation" destdir="./apidocs" template="responsive">
+				<fileset dir="./controllers">
+				<include name="**/*.php" />
+				</fileset>
+			</phpdoc2>
+	
+	<!-- Comprimir nuestro proyecto-->
+	<zip destfile="proyecto.zip">
+		<fileset dir=".">
+			<include name="**/*.php"/>
+		</fileset>
+	</zip>
+			
+	
+
+</project>

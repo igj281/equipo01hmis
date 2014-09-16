@@ -1,0 +1,50 @@
+<?php
+class EventosControllerTest extends PHPUnit_Framework_TestCase{
+
+	//comprobamos que redirecciona correctamente
+	
+	public function testIndex(){
+		$this->call('GET', 'admin');
+		$this->assertResponseOk();
+	}
+	
+	//comprobamos que redirecciona correctamente
+	
+	public function testEventito(){
+		$this->call('GET', 'eventos');
+		$this->assertResponseOk();
+	}
+	
+	//comprobamos que añade el evento
+	
+	public function testPostEvento(){
+		$reglas =  array(
+				'nombre'  => array('required', 'min:8', 'unique:eventos'),
+				'fecha'=>'required',
+				'hora'=>'required',
+				'tipo'=>'required',
+				'aforo'=>'required',
+				'descripcion'=>'required'
+
+				);
+				$validator = Validator::make(Input::all(), $reglas);
+				if ( $validator->fails() ){
+					$this->call('POST', '/eventos');
+					$this->assertSessionHasErrors();
+				}else{
+					$eventos=new Evento;	
+						$eventos->nombre=Input::get('nombre');
+						$eventos->fecha=Input::get('fecha');
+						$eventos->hora=Input::get('hora');
+						$eventos->tipo=Input::get('tipo');
+						$eventos->aforo=Input::get('aforo');
+						$eventos->descripcion=Input::get('descripcion');
+
+						$eventos->save();
+						$this->call('POST', 'eventos');
+ 
+						$this->assertRedirectedToRoute('eventos');
+				}
+	}
+	
+}

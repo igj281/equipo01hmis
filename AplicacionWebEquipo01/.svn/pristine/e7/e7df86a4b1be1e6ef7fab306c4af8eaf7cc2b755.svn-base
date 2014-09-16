@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+
+        <?php echo HTML::style('assets/bootstrap/css/bootstrap.min.css');; ?>
+    </head>
+    <body>
+        <div class="container">
+           <table class="table table-striped">
+            <tr>
+            <td> ID</td>
+            <td> Nombre</td>
+            <td> Fecha</td>
+            <td> Hora</td>
+            <td> Tipo</td>
+            <td> Aforo</td>
+  
+            <?php foreach($eventos as $evento): ?>
+
+              
+                <tr>
+             <td>  <?php echo $evento->id; ?> </td>
+             <td>  <?php echo $evento->nombre; ?> </td>
+             <td>  <?php echo $evento->fecha; ?> </td>
+             <td>  <?php echo $evento->hora; ?> </td>
+             <td>  <?php echo $evento->tipo; ?> </td>
+             <td>  <?php echo $evento->aforo; ?> </td>
+            
+            <?php endforeach; ?>
+                </table>
+        </div>
+    </body>
+</html>

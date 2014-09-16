@@ -1,0 +1,39 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register all of the routes for an application.
+| It's a breeze. Simply tell Laravel the URIs it should respond to
+| and give it the Closure to execute when that URI is requested.
+|
+*/
+
+Route::get('login', 'AuthController@showLogin');
+Route::post('login', 'AuthController@postLogin');
+Route::get('logout', 'AuthController@logout');
+
+
+
+Route::get('admin', array('as' => 'admin.index', 'before' => 'auth', 'uses' => 'EventosController@index'));
+Route::get('eventos', array('as' => 'admin.eventos', 'before' => 'auth', 'uses' => 'EventosController@eventito'));
+Route::post('eventos','EventosController@postEvento');
+
+Route::get('registro', 'RegistroController@showForm');
+Route::post('registro', 'RegistroController@postRegistro');
+
+
+Route::resource('usuarios', 'HomeController', ['before'=>'auth']);
+Route::get('eventosadmin', array('as' => 'admin.eventosadmin', 'before' => 'auth', 'uses' => 'HomeController@allEvents'));
+
+Route::post('eventosadmin', 'HomeController@deleteEvents');
+
+Route::get('logueado', array('as' => 'logueado.index', 'before' => 'auth', 'uses' => 'LogueadosController@index'));
+
+Route::get('/', function()
+{
+	return View::make('hello');
+});
+

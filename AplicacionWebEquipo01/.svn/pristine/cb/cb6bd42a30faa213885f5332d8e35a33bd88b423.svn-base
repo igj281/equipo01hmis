@@ -1,0 +1,54 @@
+<?php
+class RegistroControllerTest extends PHPUnit_Framework_TestCase {
+	
+	//en este test comprobamos si nos redirecciona adecuadamente cuando está autetificado o no
+	
+	public function testShowForm(){
+	
+		//si el usuario está autentificado
+		
+		if (Auth::check()){
+			$this->call('GET', '/');
+			$this->assertResponseOk();
+		}
+		
+		//si el usuario no está autentificado
+		
+		$this->call('GET', 'registro');
+		$this->assertResponseOk();
+	}
+	
+	//comprobamos que actúa correctamente al registrarse
+	
+	public function testpostRegistro(){
+	
+			$reglas =  array(
+					'user'  => array('required', 'min:8', 'unique:users'),
+					'password'=>'required',
+					'email'=>array('required','email'),
+					'nombre'=>'required',
+					'apellidos'=>'required',
+					'telefono'=>'required'
+
+					);
+				$validator = Validator::make(Input::all(), $reglas);
+					if ( $validator->fails() ){
+						$this->call('POST', '/registro');
+						$this->assertSessionHasErrors();
+					}else{
+						$usuario=new User;
+						$usuario->user=Input::get('user');
+						$usuario->password=Hash::make(Input::get('password'));
+						$usuario->email=Input::get('email');
+						$usuario->nombre=Input::get('nombre');
+						$usuario->apellidos=Input::get('apellidos');
+						$usuario->telefono=Input::get('telefono');
+
+						$usuario->save();
+						$this->call('POST', '/login');
+ 
+						$this->assertRedirectedToRoute('/login');
+					}
+	}
+	
+}	

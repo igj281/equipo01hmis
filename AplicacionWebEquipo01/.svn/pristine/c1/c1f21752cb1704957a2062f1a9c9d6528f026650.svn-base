@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AplicacionWebEquipo01" default="deploy" basedir=".">
+	<!-- Elimina el build existente, documentos y directorios-->
+
+	<target name="clean" description="Cleanup build artifacts">
+		<delete dir="${basedir}/build/coverage"/>
+		<delete dir="${basedir}/build/logs"/>
+		<delete dir="${basedir}/build/api"/>
+		<delete dir="${basedir}/application/cache"/>
+	</target>
+
+	<!-- Crea el  build, documentos y directorios-->
+
+	<target name="prepare" description="Prepare for build">
+		<mkdir dir="${basedir}/build/coverage"/>
+		<mkdir dir="${basedir}/build/logs"/>
+		<mkdir dir="${basedir}/build/api"/>
+		<mkdir dir="${basedir}/application/cache"/>
+	</target>
+	
+	<!-- Crea la bd -->
+
+			<target name="bd">
+				<pdosqlexec url="mysql:host=equipo01hmiWS.cloudapp.net;port=3306;dbname=horashmis" 
+					userid="hmi" password="hmi" >
+					<transaction src="database/horashmis.sql" />
+				</pdosqlexec>
+			</target>
+
+
+			
+	<!-- Cálculo de la cobertura en nuestro proyecto-->
+
+		<target name="test" depends="bd">
+			<phpunit haltonfailure="true"  printsummary="true">
+				<batchtest>
+					<fileset dir=".">
+						<include name="controllers/*Test.php"/>
+					</fileset>
+				</batchtest>
+			</phpunit>
+			<exec dir="."
+					command="phpunit --log-junit 'reports/unitreport.xml'
+					--coverage-html 'reports/coverage'
+					--coverage-clover 'reports/coverage/coverage.xml'
+					test/"
+				/>
+		</target>
+
+
+		<!-- Despliega la app mediante ftp-->
+
+		<target name="deploy" depends="test" >
+			<ftpdeploy 
+			 host="equipo01hmiWS.cloudapp.net" 
+			 port="21" 
+			 username="admin" 
+			 password="aPxuSXem7n"	 
+			 passive="true"
+			level="debug"
+			>
+				<fileset dir="./proyectoCompleto">
+					<include name="**"/>
+					<exclude name="%WORKSPACE%\results.htm"/>
+					<exclude name="build*.xml"/>
+					<exclude name="phing"/>
+					<exclude name="img/**.png"/>
+					<exclude name="img/**.gif"/>
+					<exclude name="img/**.jpg"/>
+				</fileset>
+			</ftpdeploy>
+		</target>
+
+
+		<!--archivo phar -->
+
+		<target name="pharpackage">
+			<pharpackage destfile="./build/package.phar" basedir="./">
+				<fileset dir="./classes">
+					<include name="**/**" />
+				</fileset>
+				<metadata>
+					<element name="version" value="1.0" />
+					<element name="authors">
+						<element name="John Doe">
+							<element name="e-mail" value="john@example.com" />
+						</element>
+					</element>
+				</metadata>
+			</pharpackage>
+		</target>
+
+		<!-- Crea la documentacion de nuestro proyecto-->
+
+		<target name="documentacion">
+			<phpdoc2 title="API Documentation"
+				destdir="apidocs"
+				template="clean">
+				<fileset dir="./classes">
+					<include name="**/*.php" />
+				</fileset>
+			</phpdoc2>
+		</target>
+
+		<!-- Comprimir nuestro proyecto-->
+
+		<zip destfile="proyecto.zip">
+			<fileset dir=".">
+				<include name="**/*.php"/>
+			</fileset>
+		</zip>
+</project>

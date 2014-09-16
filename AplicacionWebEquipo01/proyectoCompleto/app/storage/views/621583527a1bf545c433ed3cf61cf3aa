@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+
+        <?php echo HTML::style('assets/bootstrap/css/bootstrap.min.css');; ?>
+    </head>
+    <body>
+        <div class="container">
+           <table class="table table-striped">
+            <tr>
+            <td> ID</td>
+            <td> Usuario</td>
+            <td> Nombre</td>
+            <td> Apellidos</td>
+            <td> Email</td>
+            <td> Telefono</td>
+  
+            <?php foreach($usuarios as $usuario): ?>
+
+              
+                <tr>
+             <td>  <?php echo $usuario->id; ?> </td>
+             <td>  <?php echo $usuario->user; ?> </td>
+             <td>  <?php echo $usuario->nombre; ?> </td>
+             <td>  <?php echo $usuario->apellidos; ?> </td>
+             <td>  <?php echo $usuario->email; ?> </td>
+             <td>  <?php echo $usuario->telefono; ?> </td>
+              <td style="text-align: center;"> 
+               <?php echo Form::model($usuario, array('url' => array ('usuarios', $usuario->id), 
+               'method' => 'DELETE', 'role' => 'form')); ?>
+               <?php echo Form::submit('Eliminar', array('class' => 'btn btn-danger')); ?>
+               <?php echo Form::close(); ?>
+            </td>
+                
+            <?php endforeach; ?>
+                </table>
+        </div>
+    </body>
+</html>
